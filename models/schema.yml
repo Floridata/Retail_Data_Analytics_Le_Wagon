@@ -6,7 +6,33 @@ sources:
     tables:
       - name: store
         identifier: stores_data_set
+        columns:
+          - name: "(store)"
+            description: primary key of the table
+            tests:
+              - unique
+              - not_null
+          - name: "(type)"
+            description: vérifier s'il y a un type pour l'ensemble des magasins
+            tests:
+              - not_null
+          - name: "(size)"
+            description: vérifier s'il y a une dimension pour l'ensemble des magasins
+            tests:
+              - not_null
       - name: feature
         identifier: features_data_set
+        columns:
+          - name: "(store || '-' || date)"
+            description: primary key of the table
+            tests:
+              - unique
+              - not_null
       - name: sales
         identifier: sales_data_set
+        columns:
+          - name: "(store || '-' || date || '-' || dept)"
+            description: primary key of the table
+            tests:
+              - unique
+              - not_null
