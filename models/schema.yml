@@ -28,6 +28,34 @@ sources:
             tests:
               - unique
               - not_null
+          - name: Store
+            description: Vérifier qu'aucune valeur de la colonne Store n'est nulle
+            tests:
+              - not_null
+          - name: Date
+            description: Vérifier qu'aucune valeur de la colonne Date n'est nulle
+            tests:
+              - not_null
+          - name: Temperature
+            description: Vérifier qu'aucune valeur de la colonne température n'est nulle
+            tests:
+              - not_null
+          - name: Fuel_Price
+            description: Vérifier qu'aucune valeur de la colonne Fuel Price n'est nulle
+            tests:
+              - not_null
+          - name: CPI
+            description: Vérifier qu'aucune valeur de la colonne CPI n'est nulle
+            tests:
+              - not_null
+          - name: Unemployment
+            description: Vérifier qu'aucune valeur de la colonne Unemployment n'est nulle
+            tests:
+              - not_null
+          - name: IsHoliday
+            description: Vérifier qu'aucune valeur de la colonne IsHoliday n'est nulle
+            tests:
+              - not_null
       - name: sales
         identifier: sales_data_set
         columns:
@@ -35,4 +63,24 @@ sources:
             description: primary key of the table
             tests:
               - unique
+              - not_null
+          - name: store
+            description: Vérifier qu'aucune valeur de la colonne store n'est nulle
+            tests:
+              - not_null
+          - name: dept
+            description: Vérifier qu'aucune valeur de la colonne dept n'est nulle
+            tests:
+              - not_null
+          - name: date
+            description: Vérifier qu'aucune valeur de la colonne date n'est nulle
+            tests:
+              - not_null
+          - name: weekly_sales
+            description: Vérifier qu'aucune valeur de la colonne weekly_sales n'est nulle
+            tests:
+              - not_null
+          - name: isholiday
+            description: Vérifier qu'aucune valeur de la colonne isholiday n'est nulle
+            tests:
               - not_null

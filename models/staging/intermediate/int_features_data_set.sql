@@ -11,7 +11,5 @@ SELECT
   safe_cast(MarkDown5 AS float64) as Markdown5,
   safe_cast(CPI as float64) as CPI,
   safe_cast(Unemployment as float64) as Unemployment,
-  IsHoliday,
   CONCAT('Store ', CAST(store AS STRING),' - ', CAST(date AS STRING)) AS store_date
 FROM {{ ref('stg_raw__feature') }}
-
