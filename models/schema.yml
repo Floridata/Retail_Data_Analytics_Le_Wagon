@@ -5,8 +5,8 @@ sources:
     schema: raw_data_retail
     tables:
       - name: store
-        identifier: stores data-set
+        identifier: stores_data_set
       - name: feature
-        identifier: features data-set
+        identifier: features_data_set
       - name: sales
-        identifier: sales data-set
+        identifier: sales_data_set
