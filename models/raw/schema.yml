@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw_data_retail
+    tables:
+      - name: store
+        identifier: stores data-set
+      - name: feature
+        identifier: features data-set
+      - name: sales
+        identifier: sales data-set
