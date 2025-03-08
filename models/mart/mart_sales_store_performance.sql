@@ -2,7 +2,7 @@ SELECT
     s.Store,
     st.Type,
     st.Size_sqm,
-    ROUND(SUM(s.Weekly_Sales), 2) AS Total_Sales_per_store,
+    ROUND(SUM(s.Weekly_Sales), 2) AS Total_Sales_per_Store,
     ROUND(AVG(s.Weekly_Sales), 2) AS Avg_Sales,
     ROUND(SUM(s.Weekly_Sales) / st.Size_sqm, 2) AS Sales_per_sqm,
     ROUND(SUM(IFNULL(f.MarkDown1, 0)), 2) AS Total_MarkDown1,
