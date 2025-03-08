@@ -4,12 +4,13 @@ SELECT
   Temperature as Temperature_Farenheit,
   ROUND((Temperature-32)*5/9, 2) AS Temperature_Celsius,
   Fuel_Price,
-  safe_cast(MarkDown1 AS float64) as Markdown1,
-  safe_cast(MarkDown2 AS float64) as Markdown2,
-  safe_cast(MarkDown3 AS float64) as Markdown3,
-  safe_cast(MarkDown4 AS float64) as Markdown4,
-  safe_cast(MarkDown5 AS float64) as Markdown5,
-  safe_cast(CPI as float64) as CPI,
-  safe_cast(Unemployment as float64) as Unemployment,
+  COALESCE(SAFE_CAST(REPLACE(MarkDown1, ',', '.') AS FLOAT64), 0) AS Markdown1,
+  COALESCE(SAFE_CAST(REPLACE(MarkDown2, ',', '.') AS FLOAT64), 0) AS Markdown2,
+  COALESCE(SAFE_CAST(REPLACE(MarkDown3, ',', '.') AS FLOAT64), 0) AS Markdown3,
+  COALESCE(SAFE_CAST(REPLACE(MarkDown4, ',', '.') AS FLOAT64), 0) AS Markdown4,
+  COALESCE(SAFE_CAST(REPLACE(MarkDown5, ',', '.') AS FLOAT64), 0) AS Markdown5,
+  COALESCE(SAFE_CAST(REPLACE(CPI, ',', '.') AS FLOAT64), 0) AS CPI,
+  COALESCE(SAFE_CAST(REPLACE(unemployment, ',', '.') AS FLOAT64), 0) AS unemployment,
   CONCAT('Store ', CAST(store AS STRING),' - ', CAST(date AS STRING)) AS Store_date
 FROM {{ ref('stg_raw__feature') }}
+
