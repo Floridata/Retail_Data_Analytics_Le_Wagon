@@ -1,6 +1,8 @@
 SELECT 
 
-    S.Date_date,
+    s.Date_date,
+    COUNT(s.IsHoliday = True),
+
     ROUND(SUM(s.Weekly_Sales), 2) AS Total_Sales_per_Date,
     ROUND(AVG(s.Weekly_Sales), 2) AS Avg_Sales,
     ROUND(SUM(IFNULL(f.MarkDown1, 0)), 2) AS Total_MarkDown1,
@@ -27,5 +29,5 @@ SELECT
 FROM {{ ref('int_sales_data_set') }} AS s
 LEFT JOIN {{ ref('int_features_data_set') }} AS f ON s.Store = f.Store
 LEFT JOIN {{ ref('int_stores_data_set') }} AS st ON s.Store = st.Store
-GROUP BY S.Date_date
+GROUP BY s.Date_date, s.IsHoliday
 ORDER BY Date_date ASC
