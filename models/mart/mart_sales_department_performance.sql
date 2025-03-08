@@ -1,9 +1,7 @@
 SELECT 
     s.Dept,
-    st.Size_sqm,
     ROUND(SUM(s.Weekly_Sales), 2) AS Total_Sales,
     ROUND(AVG(s.Weekly_Sales), 2) AS Avg_Sales,
-    ROUND(SUM(s.Weekly_Sales) / st.Size_sqm, 2) AS Sales_per_sqm,
     ROUND(SUM(IFNULL(f.MarkDown1, 0)), 2) AS Total_MarkDown1,
     ROUND(SUM(IFNULL(f.MarkDown2, 0)), 2) AS Total_MarkDown2,
     ROUND(SUM(IFNULL(f.MarkDown3, 0)), 2) AS Total_MarkDown3,
@@ -28,5 +26,5 @@ SELECT
 FROM {{ ref('int_sales_data_set') }} AS s
 LEFT JOIN {{ ref('int_features_data_set') }} AS f ON s.Store = f.Store
 LEFT JOIN {{ ref('int_stores_data_set') }} AS st ON s.Store = st.Store
-GROUP BY s.Dept, st.Type, st.Size_sqm
+GROUP BY s.Dept
 ORDER BY Dept ASC
