@@ -1,6 +1,6 @@
 SELECT 
     s.Dept,
-    ROUND(SUM(s.Weekly_Sales), 2) AS Total_Sales,
+    ROUND(SUM(s.Weekly_Sales), 2) AS Total_Sales_per_Department,
     ROUND(AVG(s.Weekly_Sales), 2) AS Avg_Sales,
     ROUND(SUM(IFNULL(f.MarkDown1, 0)), 2) AS Total_MarkDown1,
     ROUND(SUM(IFNULL(f.MarkDown2, 0)), 2) AS Total_MarkDown2,
