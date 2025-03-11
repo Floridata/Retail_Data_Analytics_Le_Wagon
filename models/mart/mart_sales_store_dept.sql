@@ -48,7 +48,7 @@ FROM (
         ROUND(AVG(CPI), 2) AS Average_CPI,
         ROUND(AVG(Unemployment), 2) AS Average_Unemployment
 
-    FROM {{ ref('int_sales_store_date_dept') }}
+    FROM {{ ref('mart_sales_store_date_dept') }}
     GROUP BY Store, Dept, Type, Size_sqm
 ) AS subquery
 
