@@ -44,7 +44,7 @@ FROM (
         ROUND(SUM(Total_Markdown), 2) AS Sum_Total_Markdown,
         ROUND(AVG(CPI), 2) AS Average_CPI,
         ROUND(AVG(Unemployment), 2) AS Average_Unemployment
-    FROM {{ ref('int_sales_store_date_dept') }}
+    FROM {{ ref('mart_sales_store_date_dept') }}
     GROUP BY Date_date, IsHoliday
 ) AS subquery
 ORDER BY Date_date ASC
