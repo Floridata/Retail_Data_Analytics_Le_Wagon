@@ -43,7 +43,7 @@ SELECT
     ROUND(AVG(CPI),2) AS Average_CPI,
     ROUND(AVG(Unemployment),2) AS Average_Unemployment
 
-FROM {{ ref('mart_sales_store_date_dept') }}
+FROM {{ ref('int_sales_store_date_dept') }}
 GROUP BY dept
 ) AS subquery
 ORDER BY dept ASC
