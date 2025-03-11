@@ -1,17 +1,18 @@
 SELECT
-    Store,
+    Dept,
+    Date_date,
     Type,
     Size_sqm,
     Total_Weekly_Sales,
-    RANK() OVER (ORDER BY Total_Weekly_Sales DESC) AS Total_Sales_Rank,
+    RANK() OVER (PARTITION BY Dept ORDER BY Total_Weekly_Sales DESC) AS Total_Sales_Rank,
     Average_Weekly_Sales,
-    RANK() OVER (ORDER BY Average_Weekly_Sales DESC) AS Average_Weekly_Sales_Rank,
+    RANK() OVER (PARTITION BY Dept ORDER BY Average_Weekly_Sales DESC) AS Average_Weekly_Sales_Rank,
     Weekly_Sales_Size_Sqm,
-    RANK() OVER (ORDER BY Weekly_Sales_Size_Sqm DESC) AS Weekly_Sales_Size_Sqm_Rank,
+    RANK() OVER (PARTITION BY Dept ORDER BY Weekly_Sales_Size_Sqm DESC) AS Weekly_Sales_Size_Sqm_Rank,
     Weigted_Weekly_Sales,
-    RANK() OVER (ORDER BY Weigted_Weekly_Sales DESC) AS Weigted_Weekly_Sales_Rank,
+    RANK() OVER (PARTITION BY Dept ORDER BY Weigted_Weekly_Sales DESC) AS Weigted_Weekly_Sales_Rank,
     Weigted_Weekly_Sales_Sales_Size_Sqm,
-    RANK() OVER (ORDER BY Weigted_Weekly_Sales_Sales_Size_Sqm DESC) AS Weigted_Weekly_Sales_Sales_Size_Sqm_Rank,
+    RANK() OVER (PARTITION BY Dept ORDER BY Weigted_Weekly_Sales_Sales_Size_Sqm DESC) AS Weigted_Weekly_Sales_Sales_Size_Sqm_Rank,
     Average_Temperature_Celsius,
     Average_Fuel_Price,
     Sum_Markdown1,
@@ -27,7 +28,8 @@ SELECT
     Average_Unemployment
 FROM (
     SELECT
-        Store,
+        Dept,
+        Date_date,
         Type,
         Size_sqm,
         ROUND(SUM(Weekly_Sales), 2) AS Total_Weekly_Sales,
@@ -47,6 +49,7 @@ FROM (
         ROUND(AVG(Unemployment), 2) AS Average_Unemployment
 
     FROM {{ ref('int_sales_store_date_dept') }}
-    GROUP BY Store, Type, Size_sqm
+    GROUP BY Dept, Date_date, Type, Size_sqm
 ) AS subquery
-ORDER BY Store ASC
+
+ORDER BY Dept, Date_date ASC
